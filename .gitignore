@@ -30,3 +30,6 @@ hs_err_pid*
 
 # maven results
 target/
+
+#properties
+src/main/webapp/WEB-INF/properties/

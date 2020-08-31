@@ -9,4 +9,34 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>file:src/main/webapp/WEB-INF/properties/datasource.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="connectionTestQuery" value="SELECT 1" />
+        <property name="dataSourceClassName" value="${hikari.dataSourceClassName}" />
+        <property name="maximumPoolSize" value="${hikari.maximumPoolSize}" />
+        <property name="idleTimeout" value="${hikari.idleTimeout}" />
+    
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="jdbcUrl">${dataSource.jdbcUrl}</prop>
+                <prop key="user">${dataSource.username}</prop>
+                <prop key="password">${dataSource.password}</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- HikariCP configuration -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg name="configuration" value="HikariConfig" />
+    </bean>
+    
+
 </beans>
