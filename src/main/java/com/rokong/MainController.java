@@ -15,6 +15,7 @@ public class MainController {
     @GetMapping("/")
     public String helloSpring(Model model){
         model.addAttribute("message", mainService.getWelcomeMessage());
+        model.addAttribute("timestamp", mainService.getTimestamp());
         return "/index";
     }
 }

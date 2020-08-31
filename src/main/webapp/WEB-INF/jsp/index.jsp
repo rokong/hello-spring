@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        ${message }
+        ${message }<br>
+        ${timestamp }
     </body>
 </html>
