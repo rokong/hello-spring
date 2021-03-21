@@ -1,4 +1,4 @@
-package com.rokong;
+package com.rokong.main;
 
 public interface MainService {
     public String getWelcomeMessage();

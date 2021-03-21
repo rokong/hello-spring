@@ -1,6 +1,6 @@
 import static org.junit.Assert.assertTrue;
 
-import com.rokong.MainDAO;
+import com.rokong.main.MainDAO;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

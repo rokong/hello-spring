@@ -33,3 +33,7 @@ target/
 
 #properties
 src/main/webapp/WEB-INF/properties/
+
+# intellij
+*.iml
+.idea
