@@ -19,8 +19,8 @@ public enum PERIOD {
     SEMIANNUAL("12", 6),
     ANNUAL("13", 12);
 
-    private String codeValue;
-    private int monthCnt;
+    private final String codeValue;
+    private final int monthCnt;
 
     PERIOD(String codeValue, int monthCnt){
         this.codeValue = codeValue;
@@ -43,31 +43,32 @@ public enum PERIOD {
         return StringUtils.leftPad(defaultString(month, "1"), 2, "0");
     }
 
-    public int startMonthOf(Object periodDtl){
+    public int startMonthOf(Object statDtlCond){
         if(this.equals(PERIOD.ANNUAL)){
-            periodDtl = null;
+            statDtlCond = null;
         }
 
-        int month = Integer.parseInt(defaultString(periodDtl, "1"));
+        int month = Integer.parseInt(defaultString(statDtlCond, "1"));
         month = ((month-1) * monthCnt) + 1;
 
         return month;
     }
 
-    public int endMonthOf(Object periodDtl){
-        int month = startMonthOf(periodDtl) + monthCnt - 1;
-        return month;
+    public int endMonthOf(Object statDtlCond){
+        return startMonthOf(statDtlCond) + monthCnt - 1;
     }
 
-    public List<String> getMonthList(Object periodDtl){
+    /**
+     * 세부주기를 통해 해당하는 월 목록을 구한다.
+     *
+     * @param statDtlCond 세부주기
+     * @return 월 목록
+     */
+    public List<String> getMonthList(Object statDtlCond){
         List<String> monthList = new ArrayList<>();
 
-        if(this.equals(PERIOD.ANNUAL)){
-            periodDtl = null;
-        }
-
-        int month = startMonthOf(periodDtl);
-        int endMonth = endMonthOf(periodDtl);
+        int month = startMonthOf(statDtlCond);
+        int endMonth = endMonthOf(statDtlCond);
 
         while(month <= endMonth){
             monthList.add(format(month));
@@ -77,6 +78,13 @@ public enum PERIOD {
         return monthList;
     }
 
+    /**
+     * 코드값으로 해당하는 PERIOD 객체를 찾는다.
+     * 일치하는 코드값이 없다면 기본적으로 MONTH가 반환된다.
+     *
+     * @param codeValue 찾을 코드값
+     * @return 코드값에 맞는 PERIOD
+     */
     public static PERIOD getObject(Object codeValue){
         for(PERIOD period : PERIOD.values()){
             if(period.codeEquals(codeValue)){
