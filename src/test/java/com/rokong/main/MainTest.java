@@ -1,3 +1,5 @@
+package com.rokong.main;
+
 import static org.junit.Assert.assertTrue;
 
 import com.rokong.main.MainDAO;
