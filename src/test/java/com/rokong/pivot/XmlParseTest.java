@@ -1,4 +1,4 @@
-package com.rokong.xml.parse;
+package com.rokong.pivot;
 
 /**
  * xml.parse에 있는 XML PARSER를 테스트한다.
@@ -7,4 +7,5 @@ package com.rokong.xml.parse;
  * @since 2021.04.01
  */
 public class XmlParseTest {
+
 }
