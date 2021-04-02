@@ -1,4 +1,4 @@
-package com.rokong.pivot;
+package com.rokong.pivot.parser;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,6 @@
-package com.rokong.pivot;
+package com.rokong.pivot.parser;
+
+import com.rokong.pivot.parser.AbstractPivotParser;
 
 import java.io.InputStream;
 import java.sql.Blob;
@@ -6,7 +8,7 @@ import java.sql.SQLException;
 
 public class PivotBlobParser extends AbstractPivotParser<Blob> {
 
-    protected PivotBlobParser(String pivotColumn) {
+    public PivotBlobParser(String pivotColumn) {
         super(pivotColumn);
     }
 

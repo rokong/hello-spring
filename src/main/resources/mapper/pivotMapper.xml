@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rokong.pivot">
+    <!-- TMP1 table in 'WITH' clause -->
+    <sql id="tmp1">
+        TMP1 AS (
+            SELECT '2021' AS YEAR, 1 AS QUARTER, 'GOLD' AS PRIZE, '가' AS WINNER, 98 AS SCORE UNION ALL
+            SELECT '2021' AS YEAR, 1 AS QUARTER, 'SILV' AS PRIZE, '나' AS WINNER, 93 AS SCORE UNION ALL
+            SELECT '2021' AS YEAR, 1 AS QUARTER, 'BRNZ' AS PRIZE, '다' AS WINNER, 89 AS SCORE UNION ALL
+        )
+    </sql>
+
+    <!-- oracle.xdb.XMLType -->
+    <select id="selectXML" resultType="map">
+        WITH <include refid="tmp1" />
+        SELECT PRIZE_XML
+          FROM TMP1
+         PIVOT XML (
+            MAX(WINNER) AS WINNER, MAX(SCORE) AS SCORE
+            FOR PRIZE
+            IN (SELECT distinct PRIZE FROM TMP1)
+         )
+    </select>
+
+    <!-- java.sql.Clob -->
+    <select id="selectXMLClob" resultType="map">
+        WITH <include refid="tmp1" />
+        SELECT XMLSERIALIZE(CONTENT PRIZE_XML AS CLOB) AS PRIZE_XML
+          FROM TMP1
+         PIVOT XML (
+            MAX(WINNER) AS WINNER, MAX(SCORE) AS SCORE
+            FOR PRIZE
+            IN (SELECT distinct PRIZE FROM TMP1)
+         )
+    </select>
+
+    <!-- java.sql.Blob -->
+    <select id="selectXMLBlob" resultType="map">
+        WITH <include refid="tmp1" />
+        SELECT XMLSERIALIZE(CONTENT PRIZE_XML AS BLOB) AS PRIZE_XML
+          FROM TMP1
+         PIVOT XML (
+            MAX(WINNER) AS WINNER, MAX(SCORE) AS SCORE
+            FOR PRIZE
+            IN (SELECT distinct PRIZE FROM TMP1)
+         )
+    </select>
+
+    <!-- java.lang.String -->
+    <select id="selectXMLString" resultType="map">
+        WITH <include refid="tmp1" />
+        SELECT CAST(XMLSERIALIZE(CONTENT PRIZE_XML AS BLOB) AS VARCHAR2(4000)) AS PRIZE_XML
+          FROM TMP1
+         PIVOT XML (
+            MAX(WINNER) AS WINNER, MAX(SCORE) AS SCORE
+            FOR PRIZE
+            IN (SELECT distinct PRIZE FROM TMP1)
+         )
+    </select>
+</mapper>

@@ -1,5 +1,6 @@
-package com.rokong.pivot;
+package com.rokong.pivot.parser;
 
+import com.rokong.pivot.PivotXMLReader;
 import org.xml.sax.InputSource;
 
 import java.io.InputStream;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractPivotParser<E> extends PivotXMLReader implements PivotRowParser {
+
     private final String pivotColumn;
 
     protected AbstractPivotParser(String pivotColumn) {

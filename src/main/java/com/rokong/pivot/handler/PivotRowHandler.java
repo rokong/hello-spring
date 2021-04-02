@@ -1,4 +1,4 @@
-package com.rokong.pivot;
+package com.rokong.pivot.handler;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;

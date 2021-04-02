@@ -1,17 +1,17 @@
 <PivotSet>
     <item>
         <column name="PRIZE">GOLD</column>
-        <column name="PERSON">가</column>
+        <column name="WINNER">가</column>
         <column name="SCORE">98</column>
     </item>
     <item>
         <column name="PRIZE">SILV</column>
-        <column name="PERSON">나</column>
+        <column name="WINNER">나</column>
         <column name="SCORE">93</column>
     </item>
     <item>
         <column name="PRIZE">BRNZ</column>
-        <column name="PERSON">다</column>
+        <column name="WINNER">다</column>
         <column name="SCORE">89</column>
     </item>
 </PivotSet>

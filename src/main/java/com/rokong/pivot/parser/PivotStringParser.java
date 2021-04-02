@@ -1,6 +1,4 @@
-package com.rokong.pivot;
-
-import jdk.internal.util.xml.impl.Input;
+package com.rokong.pivot.parser;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -8,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 
 public class PivotStringParser extends AbstractPivotParser<String> {
 
-    protected PivotStringParser(String pivotColumn) {
+    public PivotStringParser(String pivotColumn) {
         super(pivotColumn);
     }
 

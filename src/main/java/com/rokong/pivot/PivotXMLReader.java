@@ -1,5 +1,6 @@
 package com.rokong.pivot;
 
+import com.rokong.pivot.handler.PivotRowHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
