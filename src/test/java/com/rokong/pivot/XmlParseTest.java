@@ -13,8 +13,8 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**

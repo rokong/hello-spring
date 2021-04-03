@@ -1,6 +1,5 @@
 package com.rokong.pivot.parser;
 
-import com.rokong.pivot.parser.AbstractPivotParser;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;

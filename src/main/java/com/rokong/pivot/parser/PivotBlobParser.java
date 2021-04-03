@@ -1,7 +1,5 @@
 package com.rokong.pivot.parser;
 
-import com.rokong.pivot.parser.AbstractPivotParser;
-
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;

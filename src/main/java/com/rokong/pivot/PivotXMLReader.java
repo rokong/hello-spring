@@ -18,6 +18,9 @@ public class PivotXMLReader {
         initXMLReader();
     }
 
+    /**
+     * XMLReader를 초기화한다.
+     */
     private void initXMLReader(){
         try {
             pivotReader = XMLReaderFactory.createXMLReader();
@@ -33,6 +36,11 @@ public class PivotXMLReader {
         pivotReader.setDTDHandler(pivotRowHandler);
     }
 
+    /**
+     * PIVOT XML을 Map 형태로 parse한다
+     * @param inputSource PIVOT XML
+     * @return Map형태의 PIVOT 테이블
+     */
     public Map<String, Object> parsePivotColumn(InputSource inputSource){
         Map<String, Object> pivotColumns = null;
 
